@@ -1,0 +1,12 @@
+{
+  "name": "kloud",
+  "version": "1.0.0",
+  "description": "A tiny, expressive two-eye avatar you shape, colour and export.",
+  "private": true,
+  "type": "module",
+  "author": "Kushagra Singh Bisht",
+  "license": "MIT",
+  "scripts": {
+    "dev": "python3 -m http.server 8000"
+  }
+}

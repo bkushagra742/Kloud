@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Kloud — build your face</title>
+  <meta name="description" content="Kloud: a tiny, expressive two-eye avatar you shape, colour and export. 39 shapes, nineteen expressions, only two eyes, no mouth." />
+  <meta name="theme-color" content="#0b0b0d" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Kloud — build your face" />
+  <meta property="og:description" content="A tiny, expressive two-eye avatar you shape, colour and export. 39 shapes, nineteen expressions, only two eyes, no mouth." />
+  <meta property="og:image" content="assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Kloud — build your face" />
+  <meta name="twitter:description" content="A tiny, expressive two-eye avatar you shape, colour and export." />
+  <meta name="twitter:image" content="assets/og-image.png" />
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="src/styles.css" />
+</head>
+<body>
+  <div class="bg-layer" aria-hidden="true"></div>
+
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" id="brandMark" aria-hidden="true"></span>
+        <span class="brand-name">Kloud</span>
+      </div>
+      <div class="topbar-actions">
+        <button class="icon-btn" id="randomizeBtn" aria-label="Randomize shape, expression and colour">
+          <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3.5" y="3.5" width="17" height="17" rx="4"/>
+            <circle cx="8.3" cy="8.3" r="1.15" fill="currentColor" stroke="none"/>
+            <circle cx="15.7" cy="8.3" r="1.15" fill="currentColor" stroke="none"/>
+            <circle cx="12" cy="12" r="1.15" fill="currentColor" stroke="none"/>
+            <circle cx="8.3" cy="15.7" r="1.15" fill="currentColor" stroke="none"/>
+            <circle cx="15.7" cy="15.7" r="1.15" fill="currentColor" stroke="none"/>
+          </svg>
+          <span>Surprise me</span>
+        </button>
+        <button class="icon-btn" id="aboutBtn" aria-haspopup="dialog" aria-controls="aboutDrawer">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6">
+            <circle cx="12" cy="12" r="9.2"/>
+            <path d="M12 11v5.4" stroke-linecap="round"/>
+            <circle cx="12" cy="7.6" r="0.9" fill="currentColor" stroke="none"/>
+          </svg>
+          <span>About</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1 class="hero-title">
+        <span class="hero-line">Two eyes.</span>
+        <span class="hero-line hero-line--accent">Infinite faces.</span>
+      </h1>
+      <p class="hero-sub">Shape it, colour it, export it — built entirely from two eyes and no mouth.</p>
+      <p class="hero-intro">
+        Kloud is a tiny, expressive avatar builder. Every shape shares one underlying
+        profile, so any two morph smoothly into each other — and every expression is
+        built from just two eyes, no mouth, yet still works on every shape you throw at it.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-chip"><strong>39</strong><span>shapes</span></div>
+        <div class="stat-chip"><strong>19</strong><span>expressions</span></div>
+        <div class="stat-chip"><strong>∞</strong><span>colours</span></div>
+      </div>
+      <a class="scroll-cue" href="#stageAnchor">
+        <span>Get started</span>
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 4v16M5 13l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </section>
+
+    <main class="layout" id="stageAnchor">
+      <section class="stage" aria-label="Preview">
+        <div class="stage-card" id="stageCard">
+          <svg id="kloudSvg" viewBox="-130 -130 260 260" role="img" aria-label="Kloud avatar preview">
+            <defs></defs>
+            <path id="kloudBody"></path>
+            <path id="kloudEye0"></path>
+            <path id="kloudEye1"></path>
+          </svg>
+        </div>
+        <div class="stage-hint">Move your cursor over the preview — Kloud follows it</div>
+
+        <nav class="jump-nav" aria-label="Jump to section">
+          <button class="jump-btn is-active" data-jump="shape">Shape</button>
+          <button class="jump-btn" data-jump="expression">Expression</button>
+          <button class="jump-btn" data-jump="palette">Palette</button>
+          <button class="jump-btn" data-jump="export">Export</button>
+        </nav>
+      </section>
+
+      <div class="sections">
+        <section class="block" id="shape" data-section="shape">
+          <p class="block-kicker">01 — Silhouette</p>
+          <h2 class="block-title">Shape</h2>
+          <p class="block-desc">Thirty-nine silhouettes, all built from the same profile so any two morph smoothly into each other.</p>
+          <div class="tile-grid" id="shapeGrid"></div>
+        </section>
+
+        <section class="block" id="expression" data-section="expression">
+          <p class="block-kicker">02 — Face</p>
+          <h2 class="block-title">Expression</h2>
+          <p class="block-desc">Only two eyes, no mouth. Every expression works on every shape.</p>
+          <div class="tile-grid" id="expressionGrid"></div>
+        </section>
+
+        <section class="block" id="palette" data-section="palette">
+          <p class="block-kicker">03 — Colour</p>
+          <h2 class="block-title">Palette</h2>
+          <p class="block-desc">One colour for a flat fill, or several for a smooth blended gradient.</p>
+          <div class="color-panel">
+            <div class="color-chips" id="colorChips"></div>
+            <div class="color-add-row">
+              <label class="color-add" for="colorPicker">
+                <input type="color" id="colorPicker" value="#0a0a0c" />
+                <span>+ Add colour</span>
+              </label>
+              <button class="text-btn" id="clearColors">Reset</button>
+            </div>
+
+            <div class="preset-row" id="presetRow"></div>
+
+            <div class="field-row" id="angleRow" hidden>
+              <label for="angleSlider">Blend angle</label>
+              <input type="range" id="angleSlider" min="0" max="359" value="35" />
+            </div>
+
+            <label class="toggle-row" id="animateRow" hidden>
+              <span>Animate blend</span>
+              <input type="checkbox" id="animateToggle" />
+              <span class="toggle-track" aria-hidden="true"></span>
+            </label>
+          </div>
+        </section>
+
+        <section class="block" id="export" data-section="export">
+          <p class="block-kicker">04 — Take it with you</p>
+          <h2 class="block-title">Export</h2>
+          <p class="block-desc">Still image, vector, looping clip, or straight to the clipboard.</p>
+          <div class="export-grid">
+            <button class="export-btn" id="exportPng">
+              <span class="export-title">PNG</span>
+              <span class="export-sub">Still image, 1024px</span>
+            </button>
+            <button class="export-btn" id="exportSvg">
+              <span class="export-title">SVG</span>
+              <span class="export-sub">Vector, editable</span>
+            </button>
+            <button class="export-btn" id="exportVideo">
+              <span class="export-title">Video</span>
+              <span class="export-sub">3s looped WebM</span>
+            </button>
+            <button class="export-btn" id="exportCopy">
+              <span class="export-title">Copy</span>
+              <span class="export-sub">Copy image to clipboard</span>
+            </button>
+            <button class="export-btn" id="copyLink">
+              <span class="export-title">Link</span>
+              <span class="export-sub">Copy a shareable permalink</span>
+            </button>
+          </div>
+          <p class="export-status" id="exportStatus" role="status" aria-live="polite"></p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <span>Kloud — made by Kushagra Singh Bisht</span>
+    </footer>
+  </div>
+
+  <div class="sheet-backdrop" id="aboutBackdrop" hidden></div>
+  <div class="drawer" id="aboutDrawer" role="dialog" aria-modal="true" aria-labelledby="aboutTitle" hidden>
+    <button class="drawer-close" id="aboutClose" aria-label="Close">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M6 6l12 12M18 6L6 18" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="drawer-mark" aria-hidden="true"></div>
+    <h2 id="aboutTitle">Kloud</h2>
+    <p class="about-sub">Made by Kushagra Singh Bisht</p>
+    <p class="about-body">
+      A small, shape-shifting face — one silhouette, two eyes, any colour. Thirty-nine shapes,
+      nineteen expressions, endless combinations. Build your own and take it with you.
+    </p>
+
+    <div class="drawer-section">
+      <p class="drawer-label">Get started</p>
+      <p class="about-body">
+        Pick a shape, give it an expression, choose a colour, then export. Everything on the
+        stage updates live, and your cursor is always being watched.
+      </p>
+      <button type="button" class="text-btn tour-replay-btn" id="replayTour">Replay the intro walkthrough</button>
+    </div>
+
+    <div class="drawer-section">
+      <p class="drawer-label">Elsewhere</p>
+      <div class="social-row">
+        <a class="social-link" href="https://instagram.com/bkushagra742" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3" y="3" width="18" height="18" rx="5"/>
+            <circle cx="12" cy="12" r="4.2"/>
+            <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+          <span>Instagram</span>
+        </a>
+        <a class="social-link" href="https://linkedin.com/in/bkushagra742" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6">
+            <rect x="3" y="3" width="18" height="18" rx="3"/>
+            <path d="M7.5 10.5v6M7.5 7.7v.01M11.5 16.5v-3.6c0-1.5 1-2.4 2.3-2.4 1.2 0 2.2.9 2.2 2.4v3.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>LinkedIn</span>
+        </a>
+        <a class="social-link" href="https://github.com/bkushagra742" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.6">
+            <path d="M12 2.5c-5.2 0-9.4 4.2-9.4 9.4 0 4.2 2.7 7.7 6.5 9 .5.1.6-.2.6-.5v-1.7c-2.6.6-3.2-1.2-3.2-1.2-.4-1.1-1-1.4-1-1.4-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.7.4-1.1.6-1.4-2.1-.2-4.3-1-4.3-4.6 0-1 .3-1.8.9-2.5-.1-.3-.4-1.2.1-2.4 0 0 .8-.3 2.6 1 .8-.2 1.6-.3 2.4-.3s1.6.1 2.4.3c1.8-1.2 2.6-1 2.6-1 .5 1.2.2 2.1.1 2.4.6.7.9 1.5.9 2.5 0 3.6-2.2 4.4-4.3 4.6.3.3.6.9.6 1.8v2.6c0 .3.2.6.6.5 3.8-1.3 6.5-4.8 6.5-9C21.4 6.7 17.2 2.5 12 2.5Z"/>
+          </svg>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+
+    <a class="star-btn" href="https://github.com/bkushagra742/Kloud" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" stroke="none">
+        <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.5l-5.9 3.1 1.3-6.6-4.9-4.6 6.6-.8L12 2.5Z"/>
+      </svg>
+      <span>Star Kloud on GitHub</span>
+    </a>
+  </div>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
